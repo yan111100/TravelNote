@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="format-detection" content="telephone=no">
+        <title></title>
+        <link rel="stylesheet" href="../librarys/ionic/css/ionic.min.css">
+        <link rel="stylesheet" href="../style/base.css">
+    </head>
+
+    <body>
+        
+    </body>
+
+    <script type="text/javascript" src="../librarys/jquery.min.js"></script>
+    <script src="../librarys/mustache.min.js"></script>
+    <script type="text/javascript" src="../librarys/date.js"></script>
+
+    <script id="detail-tpl" type="x-tmpl-mustache">
+    {{#value}}
+        <div class="header-image-block">
+            <img src='http://api.reactorlive.com/media/{{ image }}/w/414/m/0'>
+        </div>
+
+        <div class="resize">
+            <h2 class="detail-title">{{title}}</h2>
+            
+            <div class="item-content">
+                <div class="item-date no-padding">
+                    <span class='pull-left'>{{ create_time }}</span>
+                    <span class='pull-right' id='item-collect-{{id}}' data-collect='{{ is_collect }}' onclick='onCollectButtonClick({{id}}, $(this))'><i id='item-icon-{{id}}' class='icon size-15 {{collect_icon}}'></i><span id='number-{{id}}'>{{ collection_number }}</span>人收藏</span>
+                </div>
+            </div>
+
+            <div class="item-description">
+                <span><i class='icon left-angle'></i><span class='detail-text'>详情</span><i class='icon right-angle'></i></span>
+            </div>
+        </div>
+
+        <article class='detail-content'></article>
+    {{/value}}
+    </script>
+
+    <script>
+        var base = {
+            value: {
+                title: '精选详情'
+            }
+        };
+
+        function showDetail( data ){
+            if( data.hasOwnProperty('code') && data.code === 0 ){
+                base = data;
+                var template = $('#detail-tpl').html();
+                Mustache.parse(template);
+
+                data.value['collect_icon'] = (data.value.is_collect < 1) ? 'home-star' : 'home-star-active';
+
+                data.value.create_time = (new Date(data.value.create_time * 1000)).format('yyyy-MM-dd h:m');
+                $('body').html(Mustache.render(template, data));
+                $('article').html('<div class="article-detail">' + data.value.content + '</div>');
+
+                window.pachira.loadIamge();
+
+                setTimeout(function(){
+                    $('article').find('img').parents('p').addClass('detail-img-block');
+                }, 0);
+            }
+        }
+
+        var rs = false;
+        $(document).ready(function( e ){
+
+            $(window).scroll(function() {
+                if( $(window).scrollTop() > 45 && !rs ){
+                    rs = !rs;
+                    rs = window.pachira.setTitleBar(base.value.title, $(window).scrollTop());
+                }
+                else if( $(window).scrollTop() < 45 && rs ){
+                    rs = !rs;
+                    window.pachira.setTitleBar(base.value.title, $(window).scrollTop());
+                }
+            });
+
+            window.pachira.doGet('Choice?id=' + window.pachira.getString('id'), 'getCallback', true);
+
+        });
+
+        function getCallback( data ){
+            showDetail(data);
+        }
+
+        </script>
+</html>

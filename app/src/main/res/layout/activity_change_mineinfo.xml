@@ -1,0 +1,182 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/setting_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/setting_header"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/change_info_back"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:clickable="true"
+            android:src="@drawable/topbar_back_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/base_info"
+            android:textColor="@color/tab_text_color"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:alpha="0.5"
+        android:background="@color/setting_header_divider" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/setting_divider" />
+
+    <RelativeLayout
+        android:id="@+id/set_nickname"
+        android:layout_width="fill_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="51dp"
+            android:layout_toRightOf="@+id/nicknameHint"
+            android:textColor="@color/content_color"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/nicknameHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/nickname"
+            android:textColor="@color/sl_artical_detail"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/setting_divider" />
+
+    <RelativeLayout
+        android:id="@+id/set_sex"
+        android:layout_width="fill_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="51dp"
+            android:layout_toRightOf="@+id/sexHint"
+            android:textColor="@color/content_color"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/sexHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/sex"
+            android:textColor="@color/sl_artical_detail"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/setting_divider" />
+
+    <RelativeLayout
+        android:id="@+id/set_signature"
+        android:layout_width="fill_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:layout_toRightOf="@+id/signHint"
+            android:textColor="@color/content_color"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/signHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/signature"
+            android:textColor="@color/sl_artical_detail"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/setting_divider" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/new_blog_background"
+        android:textColor="@color/load_logo"
+        android:text="@string/exit"
+        android:textSize="17sp" />
+</LinearLayout>
